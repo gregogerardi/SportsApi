@@ -6,7 +6,7 @@
 * [HTTP Verbs](#http-verbs)
 * [Responses](#responses)
 * [Error handling](#error-handling)
-* [Authentication and authorization](#authentication-and-authorization)
+* [Security](#security)
 * [Response's body size limits](#response-body-size-limits)
 * [Endpoints List](#endpoints-list)
 
@@ -72,7 +72,13 @@ from the previous responses codes, the ones for errors are
 * 400 - Bad Request
 * 500 - Internal Server Error
 
-## Authentication and authorization
+## Security
+
+### SSL
+
+To protect the sended data between server and client we use SSL certificates. This was implemented using the keytool from de JDK to access the keys.keystore file containing the certificates
+
+### Authentication and authorization
 
 For actions that modify the information in the server will require authorization.
 This are the ones related to POST and DELETE HTTP verbs. 
