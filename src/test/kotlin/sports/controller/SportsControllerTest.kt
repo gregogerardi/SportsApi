@@ -23,6 +23,7 @@ private const val SPORT_2_NAME = "sport2"
 private const val SPORT_3_NAME = "sport3"
 private const val EXCEPTION_MESSAGE = "unexpected error"
 
+@Suppress("DEPRECATION")
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @ExtendWith(VertxExtension::class)
 class SportsControllerTest {
@@ -83,7 +84,7 @@ class SportsControllerTest {
     }
 
     @BeforeEach
-    fun clear(vertx: Vertx, context: VertxTestContext) {
+    fun clear(context: VertxTestContext) {
         clearMocks(sportsService)
         context.completeNow()
     }
@@ -321,7 +322,6 @@ class SportsControllerTest {
 
             @Test
             fun `POST a bad parsed sport`(vertx: Vertx, context: VertxTestContext) {
-                val future = Future.future<Unit>()
                 val request = vertx.createHttpClient().post(SERVER_PORT, LOCAL_HOST, "/$SPORTS").handler {
                     assertEquals(HTTP_WRONG_REQUEST, it.statusCode())
                     context.completeNow()
@@ -393,7 +393,6 @@ class SportsControllerTest {
 
             @Test
             fun `POST a bad parser schedule`(vertx: Vertx, context: VertxTestContext) {
-                val future = Future.future<Unit>()
                 val request =
                     vertx.createHttpClient().post(SERVER_PORT, LOCAL_HOST, "/$SPORTS/:$SPORT_1_NAME/$SCHEDULES")
                         .handler {
