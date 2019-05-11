@@ -1,6 +1,10 @@
 # Sports API
 
-## List of features 
+## Overview
+
+This API provides access to the list of sports that the University offer, with theirs correspondent schedules. 
+
+## Index 
 
 * [RESTful URLs](#restful-urls)
 * [HTTP Verbs](#http-verbs)
